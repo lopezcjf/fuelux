@@ -188,12 +188,13 @@
 		},
 
 		triggerChangedEvent: function triggerChangedEvent() {
+			var last = this.lastValue;
 			var currentValue = this.getValue();
 			if (currentValue === this.lastValue) return;
 			this.lastValue = currentValue;
 
 			// Primary changed event
-			this.$element.trigger('changed.fu.spinbox', currentValue);
+			this.$element.trigger('changed.fu.spinbox', { oldValue: last, newValue: currentValue });
 		},
 
 		startSpin: function startSpin(type) {
